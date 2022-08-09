@@ -1,15 +1,18 @@
 ﻿using Sabio.Models;
 using Sabio.Models.Domain;
-using Sabio.Models.Requests.OrganizationFollowers;
+using Sabio.Models.Domain.Organizations;
+
 
 namespace Sabio.Services.Interfaces
 {
     public interface IOrganizationsFollowersServices
     {
-        void Add(OrganizationFollowersRequest model);
+        void Add(int userId, int OrgId);
 
-        public Paged<OrganizationFollowers> GetByOrganizationId(int OrganizationId, int pageIndex, int pageSize);
+        public Paged<UserProfileBase> GetByOrganizationId(int organizationId, int pageIndex, int pageSize);
+
+        public Paged<OrganizationBase> GetOrgByUserId(int followerId, int pageIndex, int pageSize);
+
+        void DeleteOrgFolById(int organizationId, int followerId);
     }
-
-   
 }
